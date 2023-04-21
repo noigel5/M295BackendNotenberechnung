@@ -1,9 +1,9 @@
-package ch.ilv.notenberechnung.gradegroup;
+package ch.ilv.notenberechnung.grade;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GradeGroupRepository extends JpaRepository<GradeGroup, Long> {
+public interface GradeRepository extends JpaRepository<Grade, Long> {
 
 }
