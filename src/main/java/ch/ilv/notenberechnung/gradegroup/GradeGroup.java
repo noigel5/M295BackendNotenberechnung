@@ -1,10 +1,10 @@
 package ch.ilv.notenberechnung.gradegroup;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import ch.ilv.notenberechnung.grades.Grade;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -14,6 +14,7 @@ public class GradeGroup {
         private Long id;
         @Column(nullable = false)
         private String subject;
-//        @ManyToOne
-//        private List<Grade> grades;
+        @OneToMany
+        @JoinColumn(name = "gradeGroup")
+        private List<Grade> grades;
 }
