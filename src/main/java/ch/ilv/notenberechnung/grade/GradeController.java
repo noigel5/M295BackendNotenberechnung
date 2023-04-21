@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 public class GradeController {
 
     private final GradeService gradeService;
-    GradeController(GradeService gradeService1) {
-        this.gradeService = gradeService1;
+    GradeController(GradeService gradeService) {
+        this.gradeService = gradeService;
     }
 
     @RolesAllowed(Roles.Admin)

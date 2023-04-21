@@ -15,7 +15,7 @@ public class GradeService {
             gradeRepository.save(grade);
             return "grade added successfully";
         } catch (Exception e) {
-            return e.toString();
+            return String.valueOf(e);
         }
     }
 

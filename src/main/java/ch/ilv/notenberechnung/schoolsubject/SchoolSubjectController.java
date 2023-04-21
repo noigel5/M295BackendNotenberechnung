@@ -18,8 +18,8 @@ public class SchoolSubjectController {
 
     @RolesAllowed(Roles.Admin)
     @PostMapping("/schoolsubject")
-    public ResponseEntity<String> createschoolsubject(@RequestBody String schoolsubjectname) {
-        return new ResponseEntity<>(schoolSubjectService.createSchoolSubject(schoolsubjectname), HttpStatus.OK);
+    public ResponseEntity<String> addschoolsubject(@RequestBody SchoolSubject schoolSubject) {
+        return new ResponseEntity<>(schoolSubjectService.createSchoolSubject(schoolSubject), HttpStatus.OK);
     }
 
     @RolesAllowed(Roles.Read)

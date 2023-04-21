@@ -8,12 +8,10 @@ public class SchoolSubjectService {
     SchoolSubjectService(SchoolSubjectRepository schoolSubjectRepository) {
         this.schoolSubjectRepository = schoolSubjectRepository;
     }
-    public String createSchoolSubject(String schoolsubject) {
+    public String createSchoolSubject(SchoolSubject schoolSubject) {
         try {
-            SchoolSubject schoolSubject = new SchoolSubject();
-            schoolSubject.setSubject(schoolsubject);
             schoolSubjectRepository.save(schoolSubject);
-            return "%s created successfully".formatted(schoolsubject);
+            return "subject added successfully";
         } catch (Exception e) {
             return String.valueOf(e);
         }

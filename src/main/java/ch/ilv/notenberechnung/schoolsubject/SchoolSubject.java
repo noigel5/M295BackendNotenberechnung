@@ -1,9 +1,7 @@
 package ch.ilv.notenberechnung.schoolsubject;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import ch.ilv.notenberechnung.semester.Semester;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -14,4 +12,7 @@ public class SchoolSubject {
         private Long id;
         @Column(nullable = false)
         private String subject;
+        @ManyToOne(optional = false)
+        @JoinColumn(name = "semster_id")
+        private Semester semester;
 }
