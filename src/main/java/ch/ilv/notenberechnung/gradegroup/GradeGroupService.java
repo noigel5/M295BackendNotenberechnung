@@ -1,6 +1,5 @@
-package com.grades.notenberechnung.gradegroup;
+package ch.ilv.notenberechnung.gradegroup;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,7 +11,7 @@ public class GradeGroupService {
     public String createGroup(String groupname) {
         try {
             GradeGroup gradeGroup = new GradeGroup();
-            gradeGroup.setName(groupname);
+            gradeGroup.setSubject(groupname);
             gradeGroupRepository.save(gradeGroup);
             return "%s created successfully".formatted(groupname);
         } catch (Exception e) {

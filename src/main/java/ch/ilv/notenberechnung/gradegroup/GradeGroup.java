@@ -1,4 +1,4 @@
-package com.grades.notenberechnung.gradegroup;
+package ch.ilv.notenberechnung.gradegroup;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +13,7 @@ public class GradeGroup {
         @GeneratedValue
         private Long id;
         @Column(nullable = false)
-        private String name;
-//        @OneToMany
+        private String subject;
+//        @ManyToOne
 //        private List<Grade> grades;
 }

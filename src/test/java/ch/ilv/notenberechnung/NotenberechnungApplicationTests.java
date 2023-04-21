@@ -1,4 +1,4 @@
-package com.grades.notenberechnung;
+package ch.ilv.notenberechnung;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.grades.notenberechnung.grades;
+package ch.ilv.notenberechnung.grades;
 
 import org.springframework.web.bind.annotation.RestController;
 

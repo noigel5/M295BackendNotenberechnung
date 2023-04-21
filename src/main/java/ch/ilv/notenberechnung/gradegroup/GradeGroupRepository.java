@@ -1,4 +1,4 @@
-package com.grades.notenberechnung.gradegroup;
+package ch.ilv.notenberechnung.gradegroup;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
