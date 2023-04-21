@@ -3,6 +3,8 @@ package ch.ilv.notenberechnung.grade;
 import ch.ilv.notenberechnung.security.Roles;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @SecurityRequirement(name = "bearerAuth")
@@ -16,25 +18,25 @@ public class GradeController {
 
     @RolesAllowed(Roles.Admin)
     @PostMapping("/grade")
-    public String addgrade(@RequestBody Grade grade) {
-        return gradeService.addGrade(grade);
+    public ResponseEntity<String> addgrade(@RequestBody Grade grade) {
+        return new ResponseEntity<>(gradeService.addGrade(grade), HttpStatus.OK);
     }
 
     @RolesAllowed(Roles.Read)
     @GetMapping("/grade")
-    public String getgrade() {
-        return gradeService.getgrade();
+    public ResponseEntity<String> getgrade() {
+        return new ResponseEntity<>(gradeService.getgrade(), HttpStatus.OK);
     }
 
     @RolesAllowed(Roles.Read)
     @GetMapping("/grade/{gradeid}")
-    public String getgrade(@PathVariable Long gradeid) {
-        return gradeService.getgrade(gradeid);
+    public ResponseEntity<String> getgrade(@PathVariable Long gradeid) {
+        return new ResponseEntity<>(gradeService.getgrade(gradeid), HttpStatus.OK);
     }
 
     @RolesAllowed(Roles.Admin)
     @DeleteMapping("/grade/{gradeid}")
-    public String deletegrade(@PathVariable Long gradeid) {
-        return gradeService.deletegrade(gradeid);
+    public ResponseEntity<String> deletegrade(@PathVariable Long gradeid) {
+        return new ResponseEntity<>(gradeService.deletegrade(gradeid), HttpStatus.OK);
     }
 }

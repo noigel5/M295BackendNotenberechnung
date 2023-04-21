@@ -3,6 +3,8 @@ package ch.ilv.notenberechnung.schoolsubject;
 import ch.ilv.notenberechnung.security.Roles;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @SecurityRequirement(name = "bearerAuth")
@@ -16,19 +18,19 @@ public class SchoolSubjectController {
 
     @RolesAllowed(Roles.Admin)
     @PostMapping("/schoolsubject")
-    public String createschoolsubject(@RequestBody String schoolsubjectname) {
-        return schoolSubjectService.createSchoolSubject(schoolsubjectname);
+    public ResponseEntity<String> createschoolsubject(@RequestBody String schoolsubjectname) {
+        return new ResponseEntity<>(schoolSubjectService.createSchoolSubject(schoolsubjectname), HttpStatus.OK);
     }
 
     @RolesAllowed(Roles.Read)
     @GetMapping("/schoolsubject")
-    public String getschoolsubject() {
-        return schoolSubjectService.getSchoolSubject();
+    public ResponseEntity<String> getschoolsubject() {
+        return new ResponseEntity<>(schoolSubjectService.getSchoolSubject(), HttpStatus.OK);
     }
 
     @RolesAllowed(Roles.Admin)
     @DeleteMapping("/schoolsubject/{schoolsubject}")
-    public String deleteschoolsubject(@PathVariable Long schoolsubject) {
-        return schoolSubjectService.deleteSchoolSubject(schoolsubject);
+    public ResponseEntity<String> deleteschoolsubject(@PathVariable Long schoolsubject) {
+        return new ResponseEntity<>(schoolSubjectService.deleteSchoolSubject(schoolsubject), HttpStatus.OK);
     }
 }
