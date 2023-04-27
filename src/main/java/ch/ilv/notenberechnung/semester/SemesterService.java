@@ -36,7 +36,7 @@ public class SemesterService {
         }
     }
 
-    public String deleteSemester(long semesterid) {
+    public String deleteSemester(Long semesterid) {
         try {
             Semester semester = new Semester();
             semester.setId(semesterid);
