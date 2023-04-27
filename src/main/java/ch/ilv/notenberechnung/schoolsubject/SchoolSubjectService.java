@@ -25,6 +25,14 @@ public class SchoolSubjectService {
         }
     }
 
+    public String getSchoolSubject(Long schoolsubjectid) {
+        try {
+            return schoolSubjectRepository.findById(schoolsubjectid).toString();
+        } catch (Exception e) {
+            return String.valueOf(e);
+        }
+    }
+
     public String deleteSchoolSubject(long schoolsubject) {
         try {
             SchoolSubject schoolSubject = new SchoolSubject();

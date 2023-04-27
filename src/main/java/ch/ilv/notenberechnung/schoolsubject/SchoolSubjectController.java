@@ -28,6 +28,12 @@ public class SchoolSubjectController {
         return new ResponseEntity<>(schoolSubjectService.getSchoolSubject(), HttpStatus.OK);
     }
 
+    @RolesAllowed(Roles.Read)
+    @GetMapping("/schoolsubject/{schoolsubjectid}")
+    public ResponseEntity<String> getschoolsubject(@PathVariable Long schoolsubjectid) {
+        return new ResponseEntity<>(schoolSubjectService.getSchoolSubject(schoolsubjectid), HttpStatus.OK);
+    }
+
     @RolesAllowed(Roles.Admin)
     @DeleteMapping("/schoolsubject/{schoolsubject}")
     public ResponseEntity<String> deleteschoolsubject(@PathVariable Long schoolsubject) {

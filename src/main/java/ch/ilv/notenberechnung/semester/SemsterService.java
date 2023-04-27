@@ -28,6 +28,13 @@ public class SemsterService {
             return String.valueOf(e);
         }
     }
+    public String getSemester(Long semesterid) {
+        try {
+            return semesterRepository.findById(semesterid).toString();
+        } catch (Exception e) {
+            return String.valueOf(e);
+        }
+    }
 
     public String deleteSemester(long semesterid) {
         try {
