@@ -1,6 +1,7 @@
 package ch.ilv.notenberechnung.schoolsubject;
 
 import ch.ilv.notenberechnung.security.Roles;
+import ch.ilv.notenberechnung.semester.Semester;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
@@ -35,8 +36,14 @@ public class SchoolSubjectController {
     }
 
     @RolesAllowed(Roles.Admin)
-    @DeleteMapping("/schoolsubject/{schoolsubject}")
-    public ResponseEntity<String> deleteschoolsubject(@PathVariable Long schoolsubject) {
-        return new ResponseEntity<>(schoolSubjectService.deleteSchoolSubject(schoolsubject), HttpStatus.OK);
+    @DeleteMapping("/schoolsubject/{schoolsubjectid}")
+    public ResponseEntity<String> deleteschoolsubject(@PathVariable Long schoolsubjectid) {
+        return new ResponseEntity<>(schoolSubjectService.deleteSchoolSubject(schoolsubjectid), HttpStatus.OK);
+    }
+
+    @RolesAllowed(Roles.Admin)
+    @PutMapping("/schoolsubject")
+    public ResponseEntity<String> updateschoolsubject(@RequestBody SchoolSubject schoolSubject) {
+        return new ResponseEntity<>(schoolSubjectService.updateSchoolSubject(schoolSubject), HttpStatus.OK);
     }
 }

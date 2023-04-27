@@ -1,5 +1,6 @@
 package ch.ilv.notenberechnung.schoolsubject;
 
+import ch.ilv.notenberechnung.semester.Semester;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -39,6 +40,15 @@ public class SchoolSubjectService {
             schoolSubject.setId(schoolsubject);
             schoolSubjectRepository.deleteById(schoolSubject.getId());
             return "%s deleted successfully".formatted(schoolsubject);
+        } catch (Exception e) {
+            return String.valueOf(e);
+        }
+    }
+
+    public String updateSchoolSubject(SchoolSubject schoolSubject) {
+        try {
+            schoolSubjectRepository.save(schoolSubject);
+            return "SchoolSubject updated successfully";
         } catch (Exception e) {
             return String.valueOf(e);
         }

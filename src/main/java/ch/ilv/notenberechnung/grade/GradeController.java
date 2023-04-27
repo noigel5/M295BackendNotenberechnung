@@ -1,5 +1,6 @@
 package ch.ilv.notenberechnung.grade;
 
+import ch.ilv.notenberechnung.schoolsubject.SchoolSubject;
 import ch.ilv.notenberechnung.security.Roles;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
@@ -38,5 +39,11 @@ public class GradeController {
     @DeleteMapping("/grade/{gradeid}")
     public ResponseEntity<String> deletegrade(@PathVariable Long gradeid) {
         return new ResponseEntity<>(gradeService.deletegrade(gradeid), HttpStatus.OK);
+    }
+
+    @RolesAllowed(Roles.Admin)
+    @PutMapping("/grade")
+    public ResponseEntity<String> updategrade(@RequestBody Grade grade) {
+        return new ResponseEntity<>(gradeService.updateGrade(grade), HttpStatus.OK);
     }
 }

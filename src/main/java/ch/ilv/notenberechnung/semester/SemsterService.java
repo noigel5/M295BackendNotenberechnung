@@ -46,4 +46,13 @@ public class SemsterService {
             return String.valueOf(e);
         }
     }
+
+    public String updateSemester(Semester semester) {
+        try {
+            semesterRepository.save(semester);
+            return "Semester updated successfully";
+        } catch (Exception e) {
+            return String.valueOf(e);
+        }
+    }
 }

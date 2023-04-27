@@ -38,4 +38,10 @@ public class SemesterController {
     public ResponseEntity<String> deletesemester(@PathVariable Long semesterid) {
         return new ResponseEntity<>(semesterService.deleteSemester(semesterid), HttpStatus.OK);
     }
+
+    @RolesAllowed(Roles.Admin)
+    @PutMapping("/semester")
+    public ResponseEntity<String> updatesemester(@RequestBody Semester semester) {
+        return new ResponseEntity<>(semesterService.updateSemester(semester), HttpStatus.OK);
+    }
 }

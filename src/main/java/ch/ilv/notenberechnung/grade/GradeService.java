@@ -43,4 +43,13 @@ public class GradeService {
             return String.valueOf(e);
         }
     }
+
+    public String updateGrade(Grade grade) {
+        try {
+            gradeRepository.save(grade);
+            return "grade updated successfully";
+        } catch (Exception e) {
+            return String.valueOf(e);
+        }
+    }
 }
