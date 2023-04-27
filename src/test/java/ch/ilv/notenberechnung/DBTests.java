@@ -20,11 +20,22 @@ class DBTests {
     private SemesterRepository semesterRepository;
 
     @Test
-    void insertVehicle() {
+    void CRUD() {
+        //CREATE
         Semester semester = new Semester();
         semester.setName("test");
-        this.semesterRepository.save(semester);
+        semester = this.semesterRepository.save(semester);
         Assertions.assertNotNull(semester.getId());
+
+        //UPDATE
+        semester.setName("testupdate");
+        semester = this.semesterRepository.save(semester);
+        Assertions.assertEquals("testupdate", semester.getName());
+
+        //READ
+        Assertions.assertEquals(semester.getName(), this.semesterRepository.findById(semester.getId()).get().getName());
+
+        //DELETE
         this.semesterRepository.deleteById(semester.getId());
         Assertions.assertEquals(this.semesterRepository.findById(semester.getId()), Optional.empty());
     }
