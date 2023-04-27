@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 @SecurityRequirement(name = "bearerAuth")
 @RestController
 public class SemesterController {
-    private final SemsterService semesterService;
-    SemesterController(SemsterService semesterService) {
+    private final SemesterService semesterService;
+    SemesterController(SemesterService semesterService) {
         this.semesterService = semesterService;
     }
 

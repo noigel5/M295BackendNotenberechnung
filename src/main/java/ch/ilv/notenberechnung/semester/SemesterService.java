@@ -3,10 +3,10 @@ package ch.ilv.notenberechnung.semester;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SemsterService {
+public class SemesterService {
 
     private final SemesterRepository semesterRepository;
-    SemsterService(SemesterRepository semesterRepository) {
+    SemesterService(SemesterRepository semesterRepository) {
         this.semesterRepository = semesterRepository;
     }
     
