@@ -1,4 +1,4 @@
-package com.grades.notenberechnung;
+package ch.ilv.notenberechnung;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
