@@ -3,9 +3,7 @@ package ch.ilv.notenberechnung.calculator;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @SecurityRequirement(name = "bearerAuth")
 @RestController
@@ -19,5 +17,15 @@ public class CalculatorController {
     @PostMapping("/calculator")
     public ResponseEntity<Double> calculate(@RequestBody Calculator calculator) {
         return new ResponseEntity<>(calculatorService.calculate(calculator), HttpStatus.OK);
+    }
+
+    @GetMapping("/calculator/{subjectid}")
+    public ResponseEntity<Double> AVGSubject(@PathVariable Long subjectid) {
+        return new ResponseEntity<>(calculatorService.AvgSubject(subjectid), HttpStatus.OK);
+    }
+
+    @GetMapping("/calculators/{semesterid}")
+    public ResponseEntity<Double> AVGSemester(@PathVariable Long semesterid) {
+        return new ResponseEntity<>(calculatorService.AvgSemester(semesterid), HttpStatus.OK);
     }
 }
