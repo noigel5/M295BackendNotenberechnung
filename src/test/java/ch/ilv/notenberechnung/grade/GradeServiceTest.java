@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
-class GradeControllerTest {
+class GradeServiceTest {
 
     private GradeService gradeService;
     private final GradeRepository gradeRepositoryMock = mock(GradeRepository.class);

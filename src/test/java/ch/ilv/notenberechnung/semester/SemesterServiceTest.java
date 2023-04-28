@@ -8,11 +8,9 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
-class SemesterControllerTest {
+class SemesterServiceTest {
 
     private SemesterService semesterService;
-
-    private SemesterController semesterController = mock(SemesterController.class);
     private final SemesterRepository semesterRepositoryMock = mock(SemesterRepository.class);
 
     private final  Semester semesterMock = mock(Semester.class);
@@ -21,35 +19,36 @@ class SemesterControllerTest {
     void setUp() {
         semesterService = new SemesterService(semesterRepositoryMock);
     }
+
     @Test
     void createsemester() {
-        semesterController.createsemester(any());
-        verify(semesterController, times(1)).createsemester(any());
+        semesterService.createSemester(String.valueOf(semesterMock));
+        verify(semesterRepositoryMock, times(1)).save(any());
     }
 
     @Test
     void getallsemester() {
         when(semesterRepositoryMock.findAll()).thenReturn(List.of(semesterMock));
-        semesterController.getsemester();
-        verify(semesterController, times(1)).getsemester();
+        semesterService.getSemester();
+        verify(semesterRepositoryMock, times(1)).findAll();
     }
 
     @Test
     void getsemester() {
         when(semesterRepositoryMock.findById(any())).thenReturn(Optional.ofNullable(semesterMock));
-        semesterController.getsemester(any());
-        verify(semesterController, times(1)).getsemester(any());
+        semesterService.getSemester(1L);
+        verify(semesterRepositoryMock, times(1)).findById(any());
     }
 
     @Test
     void deletesemester() {
-        semesterController.deletesemester(any());
-        verify(semesterController, times(1)).deletesemester(any());
+        semesterService.deleteSemester(any());
+        verify(semesterRepositoryMock, times(1)).deleteById(any());
     }
 
     @Test
     void updatesemester() {
-        semesterController.updatesemester(semesterMock);
-        verify(semesterController, times(1)).updatesemester(any());
+        semesterService.updateSemester(semesterMock);
+        verify(semesterRepositoryMock, times(1)).save(any());
     }
 }
