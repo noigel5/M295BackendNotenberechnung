@@ -25,13 +25,13 @@ public class CalculatorController {
     }
 
     @GetMapping("/calculator/{subjectid}")
-    @Operation(summary = "Durchschnitt des Fachs ausgeben")
+    @Operation(summary = "Durchschnitt des Fachs ausgeben", description = "Id des Fachs eingeben, um den Durchschnitt davon zu bekommen")
     public ResponseEntity<Double> AVGSubject(@PathVariable Long subjectid) {
         return new ResponseEntity<>(calculatorService.AvgSubject(subjectid), HttpStatus.OK);
     }
 
     @GetMapping("/calculators/{semesterid}")
-    @Operation(summary = "Durchschitt des Semesters ausgeben")
+    @Operation(summary = "Durchschitt des Semesters ausgeben", description = "id des Semesters eingeben, um den Durchschnitt davon zu bekommen")
     public ResponseEntity<Double> AVGSemester(@PathVariable Long semesterid) {
         return new ResponseEntity<>(calculatorService.AvgSemester(semesterid), HttpStatus.OK);
     }
