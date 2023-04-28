@@ -9,7 +9,7 @@ import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class SchoolSubjectControllerTest {
+class SchoolSubjectServiceTest {
 
     private SchoolSubjectService schoolSubjectService;
     private final SchoolSubjectRepository schoolSubjectRepositoryMock = mock(SchoolSubjectRepository.class);
