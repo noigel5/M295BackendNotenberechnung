@@ -1,14 +1,17 @@
 package ch.ilv.notenberechnung.schoolsubject;
 
-import ch.ilv.notenberechnung.semester.Semester;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SchoolSubjectService {
     private final SchoolSubjectRepository schoolSubjectRepository;
+
     SchoolSubjectService(SchoolSubjectRepository schoolSubjectRepository) {
         this.schoolSubjectRepository = schoolSubjectRepository;
     }
+
     public String createSchoolSubject(SchoolSubject schoolSubject) {
         try {
             schoolSubjectRepository.save(schoolSubject);
@@ -18,12 +21,8 @@ public class SchoolSubjectService {
         }
     }
 
-    public String getSchoolSubject() {
-        try {
-            return schoolSubjectRepository.findAll().toString();
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public List<SchoolSubject> getSchoolSubject() {
+        return schoolSubjectRepository.findAll();
     }
 
     public String getSchoolSubject(Long schoolsubjectid) {

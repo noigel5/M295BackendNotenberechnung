@@ -2,6 +2,8 @@ package ch.ilv.notenberechnung.grade;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GradeService {
     private final GradeRepository gradeRepository;
@@ -19,12 +21,8 @@ public class GradeService {
         }
     }
 
-    public String getgrade() {
-        try {
-            return gradeRepository.findAll().toString();
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public List<Grade> getgrade() {
+        return gradeRepository.findAll();
     }
 
     public String getgrade(Long gradeid) {

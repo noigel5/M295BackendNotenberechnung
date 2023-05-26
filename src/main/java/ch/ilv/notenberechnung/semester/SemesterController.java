@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @SecurityRequirement(name = "bearerAuth")
 @RestController
 public class SemesterController {
@@ -26,7 +28,7 @@ public class SemesterController {
     @RolesAllowed(Roles.Read)
     @GetMapping("/semester")
     @Operation(summary = "Semester ausgeben", description = "Gibt alle Semester aus")
-    public ResponseEntity<String> getsemester() {
+    public ResponseEntity<List<Semester>> getsemester() {
         return new ResponseEntity<>(semesterService.getSemester(), HttpStatus.OK);
     }
 

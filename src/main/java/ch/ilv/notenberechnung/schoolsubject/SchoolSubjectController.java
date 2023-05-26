@@ -1,13 +1,14 @@
 package ch.ilv.notenberechnung.schoolsubject;
 
 import ch.ilv.notenberechnung.security.Roles;
-import ch.ilv.notenberechnung.semester.Semester;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @SecurityRequirement(name = "bearerAuth")
 @RestController
@@ -28,7 +29,7 @@ public class SchoolSubjectController {
     @RolesAllowed(Roles.Read)
     @GetMapping("/schoolsubject")
     @Operation(summary = "Fächer ausgeben", description = "Gibt alle Fächer aus")
-    public ResponseEntity<String> getschoolsubject() {
+    public ResponseEntity<List<SchoolSubject>> getschoolsubject() {
         return new ResponseEntity<>(schoolSubjectService.getSchoolSubject(), HttpStatus.OK);
     }
 

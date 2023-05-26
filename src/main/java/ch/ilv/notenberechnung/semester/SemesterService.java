@@ -2,14 +2,17 @@ package ch.ilv.notenberechnung.semester;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SemesterService {
 
     private final SemesterRepository semesterRepository;
+
     SemesterService(SemesterRepository semesterRepository) {
         this.semesterRepository = semesterRepository;
     }
-    
+
     public String createSemester(String semestername) {
         try {
             Semester semester = new Semester();
@@ -21,13 +24,10 @@ public class SemesterService {
         }
     }
 
-    public String getSemester() {
-        try {
-            return semesterRepository.findAll().toString();
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public List<Semester> getSemester() {
+        return semesterRepository.findAll();
     }
+
     public String getSemester(Long semesterid) {
         try {
             return semesterRepository.findById(semesterid).toString();

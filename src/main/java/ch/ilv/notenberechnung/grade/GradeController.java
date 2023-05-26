@@ -1,6 +1,5 @@
 package ch.ilv.notenberechnung.grade;
 
-import ch.ilv.notenberechnung.schoolsubject.SchoolSubject;
 import ch.ilv.notenberechnung.security.Roles;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -8,6 +7,8 @@ import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @SecurityRequirement(name = "bearerAuth")
 @RestController
@@ -28,7 +29,7 @@ public class GradeController {
     @RolesAllowed(Roles.Read)
     @GetMapping("/grade")
     @Operation(summary = "Noten ausgeben", description = "Gibt alle Noten aus")
-    public ResponseEntity<String> getgrade() {
+    public ResponseEntity<List<Grade>> getgrade() {
         return new ResponseEntity<>(gradeService.getgrade(), HttpStatus.OK);
     }
 
