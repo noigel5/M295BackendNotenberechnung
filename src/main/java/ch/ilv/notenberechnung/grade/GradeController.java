@@ -40,6 +40,13 @@ public class GradeController {
         return new ResponseEntity<>(gradeService.getgrade(gradeid), HttpStatus.OK);
     }
 
+    @RolesAllowed(Roles.Read)
+    @GetMapping("/gradebyschoolsubjectid/{schoolsubjectid}")
+    @Operation(summary = "bestimmte Note ausgeben", description = "Id der bestimmten schoolsubject eingeben, um bestimmte Note zu bekommen")
+    public ResponseEntity<List<Grade>> getgradebyschoolsubjectid(@PathVariable Long schoolsubjectid) {
+        return new ResponseEntity<>(gradeService.getGradeBySchoolSubjectId(schoolsubjectid), HttpStatus.OK);
+    }
+
     @RolesAllowed(Roles.Admin)
     @DeleteMapping("/grade/{gradeid}")
     @Operation(summary = "Note löschen", description = "Id der Note eingeben, um sie zu löschen")

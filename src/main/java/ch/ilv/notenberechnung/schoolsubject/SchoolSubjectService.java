@@ -33,6 +33,10 @@ public class SchoolSubjectService {
         }
     }
 
+    public List<SchoolSubject> getSchoolSubjectBySemester(Long semesterId) {
+        return schoolSubjectRepository.findBySemesterId(semesterId);
+    }
+
     public String deleteSchoolSubject(long schoolsubject) {
         try {
             SchoolSubject schoolSubject = new SchoolSubject();

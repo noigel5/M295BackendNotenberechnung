@@ -40,6 +40,13 @@ public class SchoolSubjectController {
         return new ResponseEntity<>(schoolSubjectService.getSchoolSubject(schoolsubjectid), HttpStatus.OK);
     }
 
+    @RolesAllowed(Roles.Read)
+    @GetMapping("/schoolsubjectbysemester/{semesterid}")
+    @Operation(summary = "bestimmtes Fach ausgeben", description = "Id des Fachs eingeben, um das bestimmte Fach zu bekommen")
+    public ResponseEntity<List<SchoolSubject>> getSchoolSubjectBySemesterId(@PathVariable Long semesterid) {
+        return new ResponseEntity<>(schoolSubjectService.getSchoolSubjectBySemester(semesterid), HttpStatus.OK);
+    }
+
     @RolesAllowed(Roles.Admin)
     @DeleteMapping("/schoolsubject/{schoolsubjectid}")
     @Operation(summary = "Fach löschen", description = "Id des Fachs eingeben, um es zu löschen")

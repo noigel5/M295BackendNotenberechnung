@@ -33,6 +33,10 @@ public class GradeService {
         }
     }
 
+    public List<Grade> getGradeBySchoolSubjectId(Long schoolsubjectid) {
+        return gradeRepository.findBySchoolSubjectId(schoolsubjectid);
+    }
+
     public String deletegrade(Long gradeid) {
         try {
             gradeRepository.deleteById(gradeid);
