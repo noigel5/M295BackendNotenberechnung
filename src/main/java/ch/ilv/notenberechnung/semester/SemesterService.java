@@ -3,6 +3,7 @@ package ch.ilv.notenberechnung.semester;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SemesterService {
@@ -13,46 +14,31 @@ public class SemesterService {
         this.semesterRepository = semesterRepository;
     }
 
-    public String createSemester(String semestername) {
-        try {
-            Semester semester = new Semester();
-            semester.setName(semestername);
-            semesterRepository.save(semester);
-            return "%s created successfully".formatted(semestername);
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public Semester createSemester(String semestername) {
+        Semester semester = new Semester();
+        semester.setName(semestername);
+        semesterRepository.save(semester);
+        return semester;
     }
 
     public List<Semester> getSemester() {
         return semesterRepository.findAll();
     }
 
-    public String getSemester(Long semesterid) {
-        try {
-            return semesterRepository.findById(semesterid).toString();
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public Semester getSemester(Long semesterid) {
+        Optional<Semester> semester = semesterRepository.findById(semesterid);
+        return semester.get();
     }
 
-    public String deleteSemester(Long semesterid) {
-        try {
-            Semester semester = new Semester();
-            semester.setId(semesterid);
-            semesterRepository.deleteById(semester.getId());
-            return "%s deleted successfully".formatted(semesterid);
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public Semester deleteSemester(Long semesterid) {
+        Semester semester = new Semester();
+        semester.setId(semesterid);
+        semesterRepository.deleteById(semester.getId());
+        return semester;
     }
 
-    public String updateSemester(Semester semester) {
-        try {
-            semesterRepository.save(semester);
-            return "Semester updated successfully";
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public Semester updateSemester(Semester semester) {
+        semesterRepository.save(semester);
+        return semester;
     }
 }

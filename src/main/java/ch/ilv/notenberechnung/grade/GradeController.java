@@ -22,7 +22,7 @@ public class GradeController {
     @RolesAllowed(Roles.Admin)
     @PostMapping("/grade")
     @Operation(summary = "Note hinzufügen", description = "Fügt Noten einem Fach hinzu, dafür ist die Fach Id nötig. Id der Note ist nicht notwendig")
-    public ResponseEntity<String> addgrade(@RequestBody Grade grade) {
+    public ResponseEntity<Grade> addgrade(@RequestBody Grade grade) {
         return new ResponseEntity<>(gradeService.addGrade(grade), HttpStatus.OK);
     }
 
@@ -36,7 +36,7 @@ public class GradeController {
     @RolesAllowed(Roles.Read)
     @GetMapping("/grade/{gradeid}")
     @Operation(summary = "bestimmte Note ausgeben", description = "Id der bestimmten Note eingeben, um bestimmte Note zu bekommen")
-    public ResponseEntity<String> getgrade(@PathVariable Long gradeid) {
+    public ResponseEntity<Grade> getgrade(@PathVariable Long gradeid) {
         return new ResponseEntity<>(gradeService.getgrade(gradeid), HttpStatus.OK);
     }
 
@@ -50,14 +50,14 @@ public class GradeController {
     @RolesAllowed(Roles.Admin)
     @DeleteMapping("/grade/{gradeid}")
     @Operation(summary = "Note löschen", description = "Id der Note eingeben, um sie zu löschen")
-    public ResponseEntity<String> deletegrade(@PathVariable Long gradeid) {
-        return new ResponseEntity<>(gradeService.deletegrade(gradeid), HttpStatus.OK);
+    public ResponseEntity<Grade> deletegrade(@PathVariable Grade grade) {
+        return new ResponseEntity<>(gradeService.deletegrade(grade), HttpStatus.OK);
     }
 
     @RolesAllowed(Roles.Admin)
     @PutMapping("/grade")
     @Operation(summary = "Noten bearbeiten", description = "id der Note eingeben und der Rest, um sie direkt nach den Angaben zu bearbeiten")
-    public ResponseEntity<String> updategrade(@RequestBody Grade grade) {
+    public ResponseEntity<Grade> updategrade(@RequestBody Grade grade) {
         return new ResponseEntity<>(gradeService.updateGrade(grade), HttpStatus.OK);
     }
 }

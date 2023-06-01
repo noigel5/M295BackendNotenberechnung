@@ -3,6 +3,7 @@ package ch.ilv.notenberechnung.grade;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GradeService {
@@ -12,46 +13,31 @@ public class GradeService {
         this.gradeRepository = gradeRepository;
     }
 
-    public String addGrade(Grade grade) {
-        try {
-            gradeRepository.save(grade);
-            return "grade added successfully";
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public Grade addGrade(Grade grade) {
+        gradeRepository.save(grade);
+        return grade;
     }
 
     public List<Grade> getgrade() {
         return gradeRepository.findAll();
     }
 
-    public String getgrade(Long gradeid) {
-        try {
-            return gradeRepository.findById(gradeid).toString();
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public Grade getgrade(Long gradeid) {
+        Optional<Grade> grade = gradeRepository.findById(gradeid);
+        return grade.get();
     }
 
     public List<Grade> getGradeBySchoolSubjectId(Long schoolsubjectid) {
         return gradeRepository.findBySchoolSubjectId(schoolsubjectid);
     }
 
-    public String deletegrade(Long gradeid) {
-        try {
-            gradeRepository.deleteById(gradeid);
-            return "%d deleted successfully".formatted(gradeid);
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public Grade deletegrade(Grade grade) {
+        gradeRepository.deleteById(grade.getId());
+        return grade;
     }
 
-    public String updateGrade(Grade grade) {
-        try {
-            gradeRepository.save(grade);
-            return "grade updated successfully";
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public Grade updateGrade(Grade grade) {
+        gradeRepository.save(grade);
+        return grade;
     }
 }

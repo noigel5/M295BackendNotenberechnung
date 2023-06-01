@@ -3,6 +3,7 @@ package ch.ilv.notenberechnung.schoolsubject;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SchoolSubjectService {
@@ -12,48 +13,33 @@ public class SchoolSubjectService {
         this.schoolSubjectRepository = schoolSubjectRepository;
     }
 
-    public String createSchoolSubject(SchoolSubject schoolSubject) {
-        try {
-            schoolSubjectRepository.save(schoolSubject);
-            return "subject added successfully";
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public SchoolSubject createSchoolSubject(SchoolSubject schoolSubject) {
+        schoolSubjectRepository.save(schoolSubject);
+        return schoolSubject;
     }
 
     public List<SchoolSubject> getSchoolSubject() {
         return schoolSubjectRepository.findAll();
     }
 
-    public String getSchoolSubject(Long schoolsubjectid) {
-        try {
-            return schoolSubjectRepository.findById(schoolsubjectid).toString();
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public SchoolSubject getSchoolSubject(Long schoolsubjectid) {
+        Optional<SchoolSubject> schoolSubject = schoolSubjectRepository.findById(schoolsubjectid);
+        return schoolSubject.get();
     }
 
     public List<SchoolSubject> getSchoolSubjectBySemester(Long semesterId) {
         return schoolSubjectRepository.findBySemesterId(semesterId);
     }
 
-    public String deleteSchoolSubject(long schoolsubject) {
-        try {
-            SchoolSubject schoolSubject = new SchoolSubject();
-            schoolSubject.setId(schoolsubject);
-            schoolSubjectRepository.deleteById(schoolSubject.getId());
-            return "%s deleted successfully".formatted(schoolsubject);
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public SchoolSubject deleteSchoolSubject(long schoolsubject) {
+        SchoolSubject schoolSubject = new SchoolSubject();
+        schoolSubject.setId(schoolsubject);
+        schoolSubjectRepository.deleteById(schoolSubject.getId());
+        return schoolSubject;
     }
 
-    public String updateSchoolSubject(SchoolSubject schoolSubject) {
-        try {
-            schoolSubjectRepository.save(schoolSubject);
-            return "SchoolSubject updated successfully";
-        } catch (Exception e) {
-            return String.valueOf(e);
-        }
+    public SchoolSubject updateSchoolSubject(SchoolSubject schoolSubject) {
+        schoolSubjectRepository.save(schoolSubject);
+        return schoolSubject;
     }
 }
